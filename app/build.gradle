@@ -9,7 +9,7 @@ android {
     compileSdkVersion 27
 
     signingConfigs {
-        release  {
+        release {
             keyAlias 'piano'
             keyPassword 'gipiano'
             storeFile file('piano.jks')
