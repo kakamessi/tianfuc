@@ -1,0 +1,79 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!--隐藏标题-->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="actionMenuTextColor">#FFFFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/SkipAnimation</item>
+    </style>
+
+    <!--页面切换动画-->
+    <style name="SkipAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/page_fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/page_fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/page_fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/page_fade_out</item>
+    </style>
+
+    <!--启动页主题-->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:background">@drawable/background_splash</item>
+        <item name="android:windowAnimationStyle">@style/SkipAnimation</item>
+    </style>
+
+    <!--CheckBox样式-->
+    <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/style_checkbox</item>
+    </style>
+
+    <!-- ToolBar菜单样式 -->
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@color/color_theme</item> <!--  敲定颜色-->
+        <item name="android:textSize">14sp</item> <!--  搞掂字体大小-->
+    </style>
+
+
+    <!--标签-->
+    <declare-styleable name="TagView">
+        <attr name="textPaddingLeft" format="dimension" />
+        <attr name="textPaddingRight" format="dimension" />
+        <attr name="textPaddingTop" format="dimension" />
+        <attr name="textPaddingBottom" format="dimension" />
+        <attr name="margin" format="dimension" />
+    </declare-styleable>
+
+    <!--空、错误布局-->
+    <declare-styleable name="LoadingLayout">
+        <attr name="loading_layout_error_img" format="reference"/>
+        <attr name="loading_layout_error_text" format="string"/>
+        <attr name="loading_layout_empty_img" format="reference"/>
+        <attr name="loading_layout_empty_text" format="string"/>
+        <attr name="loading_layout_loading_text" format="string"/>
+    </declare-styleable>
+
+    <!--等待加载-->
+    <style name="LoadingDialogTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+</resources>

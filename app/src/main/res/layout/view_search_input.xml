@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_search"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/white"
+    android:focusableInTouchMode="true">
+
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_toLeftOf="@+id/tv_cancel"
+        android:layout_weight="1"
+        android:background="@drawable/background_search_search"
+        android:drawableLeft="@drawable/icon_search_dark"
+        android:drawablePadding="5dp"
+        android:gravity="center|left"
+        android:hint="搜索曲名 艺术家 曲集等"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/color_content"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/iv_clean"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignRight="@+id/et_search"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:padding="8dp"
+        android:src="@drawable/icon_clear"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginRight="14dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="取消"
+        android:textColor="@color/color_theme" />
+</RelativeLayout>

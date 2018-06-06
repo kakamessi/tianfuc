@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#268ced</color>-->
+    <!--<color name="colorPrimaryDark">#268ced</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="background">#f2f2f2</color>
+
+
+    <color name="color_songbook_tab_unselect">#333333</color>
+
+    <!--主页底部导航文字-->
+    <color name="color_main_bottom_selected">#3060d3</color>
+    <color name="color_main_bottom_default">#727c85</color>
+
+    <!--tab颜色-->
+    <color name="color_tab_selected">#3160d3</color>
+    <color name="color_tab_normal">#101010</color>
+
+    <!--主题颜色-->
+    <color name="color_theme">#3160d3</color>
+
+    <!--标题颜色-->
+    <color name="color_title">#101010</color>
+
+    <!--内容颜色-->
+    <color name="color_content">#999999</color>
+
+    <!--分给线-->
+    <color name="color_line">#dce1e5</color>
+
+    <!--删除、取消、退出-->
+    <color name="color_cancel">#ee4d39</color>
+
+
+    <color name="color_filter_checked">#ffffff</color>
+    <color name="color_filter_unchecked">#101010</color>
+
+</resources>

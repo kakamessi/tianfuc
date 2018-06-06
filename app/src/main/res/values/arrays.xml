@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="songbook_tabs">
+        <item>推荐</item>
+        <item>最新</item>
+        <item>分类</item>
+    </string-array>
+
+    <string-array name="course_tabs">
+        <item>基础</item>
+        <item>进阶</item>
+        <item>考级</item>
+    </string-array>
+
+    <string-array name="mine_favorite_tabs">
+        <item>曲谱</item>
+        <item>专辑</item>
+        <item>教程</item>
+    </string-array>
+
+    <string-array name="feedback_category">
+        <item>页面设计</item>
+        <item>价钱</item>
+        <item>功能</item>
+        <item>图片内容</item>
+        <item>文字描述</item>
+    </string-array>
+
+
+    <string-array name="sort_difficult">
+        <item>不限</item>
+        <item>新手</item>
+        <item>初级</item>
+        <item>中级</item>
+        <item>高级</item>
+        <item>挑战</item>
+    </string-array>
+
+    <string-array name="sort_style">
+        <item>不限</item>
+        <item>流行</item>
+        <item>轻音乐</item>
+        <item>动漫</item>
+        <item>影视</item>
+    </string-array>
+
+    <string-array name="search_tab">
+        <item>单曲</item>
+        <item>专辑</item>
+        <item>教程</item>
+    </string-array>
+
+</resources>

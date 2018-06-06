@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/ll_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_portrait"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/icon_default_portrait" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_portrait"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_portrait"
+            android:text="Chico"
+            android:textColor="@color/color_title"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_portrait"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_portrait"
+            android:drawableLeft="@drawable/icon_boy"
+            android:drawablePadding="5dp"
+            android:text="男"
+            android:textColor="@color/color_title"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/icon_arrow" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/ll_unlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_default_portrait"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/icon_default_portrait" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/iv_default_portrait"
+            android:text="未登陆"
+            android:textColor="@color/color_title"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/btn_confirm"
+            android:gravity="center"
+            android:text="登陆"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_mine_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/icon_collection"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/icon_arrow"
+        android:gravity="center|left"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="我的收藏"
+        android:textColor="@color/color_title"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tv_mine_course"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/icon_course_history"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/icon_arrow"
+        android:gravity="center|left"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="我浏览的课程"
+        android:textColor="@color/color_title"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tv_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/icon_feedback"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/icon_arrow"
+        android:gravity="center|left"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="反馈"
+        android:textColor="@color/color_title"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/icon_about"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/icon_arrow"
+        android:gravity="center|left"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="关于"
+        android:textColor="@color/color_title"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_top_bottom_line"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="退出登陆"
+        android:textColor="#ee4d39"
+        android:textSize="16sp" />
+</LinearLayout>

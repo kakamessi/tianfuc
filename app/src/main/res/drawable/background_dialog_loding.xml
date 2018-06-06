@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--等待加载对话框背景-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--填充颜色-->
+    <solid android:color="#80000000" />
+    <!--圆角-->
+    <corners android:radius="8px" />
+    <!--边框颜色-->
+    <stroke
+        android:width="0px"
+        android:color="#ffffff" />
+</shape>

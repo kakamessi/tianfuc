@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">dialogLibrafy</string>
+
+
+    <string name="notice">提示</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+
+</resources>

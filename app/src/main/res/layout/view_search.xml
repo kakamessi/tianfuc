@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_search"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@color/color_theme"
+    android:focusableInTouchMode="true">
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_search_songbook"
+        android:drawableLeft="@drawable/icon_search_white"
+        android:drawablePadding="5dp"
+        android:gravity="center|left"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:text="搜索曲名 艺术家 曲集等"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+
+    <ImageView
+        android:id="@+id/btn_history"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:src="@drawable/icon_history" />
+</LinearLayout>
