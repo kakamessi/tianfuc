@@ -142,7 +142,8 @@
 
         <activity android:name=".ui.activity.H5Activity"
                   android:theme="@style/AppTheme.NoActionBar"
-                  android:screenOrientation="landscape" />
+                  android:screenOrientation="landscape"
+            />
     </application>
 
 </manifest>
