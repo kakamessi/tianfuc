@@ -3,6 +3,7 @@ package com.piano.android.ui.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -11,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.chico.common.ToastUtils;
 import com.piano.android.BuildConfig;
 import com.piano.android.R;
 import com.piano.android.base.BaseMidiActivity;
@@ -88,7 +90,7 @@ public class H5Activity extends BaseMidiActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 if(mWebview!=null){
-                    mWebview.loadUrl("javascript:getOneXml(" + name + ")");
+                    mWebview.loadUrl("javascript:getOneXml('" + name + "')");
                 }
             }
         });

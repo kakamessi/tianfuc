@@ -35,4 +35,13 @@ public class Constant {
     public static final String PRE_USER = "user";
     public static final String PRE_KEYWORD = "keyword";
 
+
+    /**
+     *  传递常量
+     */
+    public static final String INTENT_SONG_NAME = "INTENT_SONG_NAME";
+
+
+
+
 }

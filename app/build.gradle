@@ -10,10 +10,10 @@ android {
 
     signingConfigs {
         release {
-            keyAlias 'piano'
-            keyPassword 'gipiano'
-            storeFile file('piano.jks')
-            storePassword 'gipiano'
+            keyAlias 'tianfu'
+            keyPassword 'tianfu666'
+            storeFile file('tianfuc.jks')
+            storePassword 'tianfu666'
         }
     }
 
@@ -62,6 +62,8 @@ android {
             proguardFile 'proguard-rules.pro'
             buildConfigField 'String', 'BASE_URL', '"http://tf.ioniclub.com/"'
             buildConfigField 'String', 'BASE_IMAGE_URL', '"http://tf.ioniclub.com/sys/file/getImg?path="'
+            buildConfigField 'String', 'BASE_H5_URL', '"http://s.huangzhongdalv.com"'
+
         }
 
         debug {
@@ -74,6 +76,8 @@ android {
             proguardFile 'proguard-rules.pro'
             buildConfigField 'String', 'BASE_URL', '"http://tf.ioniclub.com/"'
             buildConfigField 'String', 'BASE_IMAGE_URL', '"http://tf.ioniclub.com/sys/file/getImg?path="'
+            buildConfigField 'String', 'BASE_H5_URL', '"http://s.huangzhongdalv.com"'
+
         }
     }
 
@@ -81,7 +85,7 @@ android {
         variant.outputs.each { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = outputFile.name.replace("app-", "paino_v${defaultConfig.versionName}_${releaseTime()}_")
+                def fileName = outputFile.name.replace("app-", "1paino_v${defaultConfig.versionName}_${releaseTime()}_")
                 output.outputFileName = fileName
             }
         }

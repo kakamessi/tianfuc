@@ -16,7 +16,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chico.common.DateUtils;
 import com.chico.common.DensityUtils;
 import com.chico.common.ScreenUtils;
-import com.chico.common.ToastUtils;
 import com.jaeger.library.StatusBarUtil;
 import com.piano.android.App;
 import com.piano.android.BuildConfig;
@@ -33,9 +32,13 @@ import com.piano.android.ui.adapter.AlbumAdapter;
 import com.piano.android.ui.mvp.constract.SingleDetailConstract;
 import com.piano.android.ui.mvp.presenter.SingleDetailPresenter;
 import com.piano.android.widget.GridItemDecoration;
+
 import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -82,6 +85,7 @@ public class SingleDetailActivity extends BasePresenterActivity<SingleDetailPres
     private boolean isFavorite;
     private MenuItem menuItem;
 
+    private String songName;
 
     @Override
     public int getContentViewId() {
@@ -170,6 +174,9 @@ public class SingleDetailActivity extends BasePresenterActivity<SingleDetailPres
         if (bean == null) {
             return;
         }
+
+        songName = bean.getDetail().getName();
+
         this.isFavorite = bean.isCollect();
         if (App.getInstance().checkLogin()) {
             setMenuIcon(isFavorite);
@@ -242,10 +249,50 @@ public class SingleDetailActivity extends BasePresenterActivity<SingleDetailPres
     }
 
 
-    @OnClick(R.id.tv_more_album)
-    public void onViewClicked() {
-        Bundle bundle = new Bundle();
-        bundle.putInt(Constant.INTENT_CATEGORY, AlbumActivity.ALBUM_LATEST);
-        startActivity(this, AlbumActivity.class, bundle);
+//    @OnClick(R.id.tv_more_album)
+//    public void onViewClicked() {
+//        Bundle bundle = new Bundle();
+//        bundle.putInt(Constant.INTENT_CATEGORY, AlbumActivity.ALBUM_LATEST);
+//        startActivity(this, AlbumActivity.class, bundle);
+//    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
+
+    @OnClick({R.id.btn_staff, R.id.bg_staff,R.id.tv_more_album})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_more_album:
+                Bundle bundle = new Bundle();
+                bundle.putInt(Constant.INTENT_CATEGORY, AlbumActivity.ALBUM_LATEST);
+                startActivity(this, AlbumActivity.class, bundle);
+                break;
+
+            case R.id.btn_staff:
+                Bundle name = new Bundle();
+                name.putString(Constant.INTENT_SONG_NAME,songName);
+                startActivity(this, H5Activity.class, name);
+                break;
+
+            case R.id.bg_staff:
+                Bundle name1 = new Bundle();
+                name1.putString(Constant.INTENT_SONG_NAME,songName);
+                startActivity(this, H5Activity.class, name1);
+                break;
+
+
+        }
+    }
+
+
+
 }
+
+
+
+
