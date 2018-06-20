@@ -59,7 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract void initActivity();
 
     /**
-     * dagger2注入
+     * dagger2入注
      *
      * @param component
      */

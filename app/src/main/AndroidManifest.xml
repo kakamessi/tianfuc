@@ -34,6 +34,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="musiccore-app" />
         <activity
             android:name=".ui.activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -140,10 +143,20 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".ui.activity.H5Activity"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:screenOrientation="landscape"
-            />
+        <activity
+            android:name=".ui.activity.H5Activity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.MusicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.wanaka.musiccore.app.MusicCoreActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="fullSensor"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></activity>
     </application>
 
 </manifest>
