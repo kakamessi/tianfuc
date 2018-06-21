@@ -2,8 +2,11 @@ package com.piano.android.base;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +34,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import jp.kshoji.driver.midi.device.MidiDeviceConnectionWatcher;
+import jp.kshoji.driver.midi.device.MidiInputDevice;
+import jp.kshoji.driver.midi.device.MidiOutputDevice;
+import jp.kshoji.driver.midi.listener.OnMidiDeviceAttachedListener;
+import jp.kshoji.driver.midi.listener.OnMidiDeviceDetachedListener;
 
 /**
  * @author: chicochen
@@ -240,4 +248,45 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         loadingDialog = null;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (deviceConnectionWatcher != null) {
+            deviceConnectionWatcher.stop();
+        }
+        deviceConnectionWatcher = null;
+
+    }
+
+    private MidiDeviceConnectionWatcher deviceConnectionWatcher = null;
+    protected void requestP(){
+        UsbManager usbManager = (UsbManager) getApplicationContext().getSystemService(Context.USB_SERVICE);
+        OnMidiDeviceAttachedListener lis = new OnMidiDeviceAttachedListener() {
+            @Override
+            public void onDeviceAttached(@NonNull UsbDevice usbDevice) {
+            }
+            @Override
+            public void onMidiInputDeviceAttached(@NonNull MidiInputDevice midiInputDevice) {
+            }
+            @Override
+            public void onMidiOutputDeviceAttached(@NonNull MidiOutputDevice midiOutputDevice) {
+            }
+        };
+        OnMidiDeviceDetachedListener dlis = new OnMidiDeviceDetachedListener() {
+            @Override
+            public void onDeviceDetached(@NonNull UsbDevice usbDevice) {
+            }
+            @Override
+            public void onMidiInputDeviceDetached(@NonNull MidiInputDevice midiInputDevice) {
+            }
+            @Override
+            public void onMidiOutputDeviceDetached(@NonNull MidiOutputDevice midiOutputDevice) {
+            }
+        };
+        deviceConnectionWatcher = new MidiDeviceConnectionWatcher(getApplicationContext(), usbManager, lis, dlis);
+    }
+
+
 }

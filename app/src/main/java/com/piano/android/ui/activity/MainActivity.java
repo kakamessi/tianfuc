@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
@@ -14,7 +13,6 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.jaeger.library.StatusBarUtil;
 import com.piano.android.BuildConfig;
 import com.piano.android.R;
-import com.piano.android.base.BaseActivity;
 import com.piano.android.base.BasePresenterActivity;
 import com.piano.android.bean.songbook.AdvertBean;
 import com.piano.android.common.dialog.AdvertDialogFragment;
@@ -74,6 +72,7 @@ public class MainActivity extends BasePresenterActivity<MainPresenter> implement
         //申请必须权限
         checkPermission(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE});
         presenter.getAdvert();
+
     }
 
     @Override

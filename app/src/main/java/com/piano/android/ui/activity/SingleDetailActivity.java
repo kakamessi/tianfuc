@@ -2,7 +2,6 @@ package com.piano.android.ui.activity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -277,7 +276,6 @@ public class SingleDetailActivity extends BasePresenterActivity<SingleDetailPres
             case R.id.btn_staff:
                 Bundle name = new Bundle();
                 name.putString(Constant.INTENT_SONG_NAME,songName);
-                name.putString("path", Environment.getExternalStorageDirectory().getPath() + "/zz3.xml");
                 startActivity(this, MusicActivity.class, name);
                 break;
 
