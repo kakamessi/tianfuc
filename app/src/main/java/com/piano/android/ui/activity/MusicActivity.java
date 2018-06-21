@@ -45,6 +45,9 @@ public class MusicActivity extends BaseMidiActivity {
     Button btn_lefthand = null;
     Button btn_righthand = null;
 
+    Button[] mBtns = {btn_play,btn_pause,
+                     btn_banzou,btn_gentan,
+                     btn_lefthand,btn_righthand,};
 
     String path = "";
     MusicScorePlayer player;
@@ -284,7 +287,17 @@ public class MusicActivity extends BaseMidiActivity {
 //        });
     }
 
-
+    private void setBtnEnable(Button... btns){
+        for(Button btn : btns){
+            for(Button btn1: mBtns){
+                if(btn.getId()==btn1.getId()){
+                    btn.setEnabled(true);
+                }else{
+                    btn.setEnabled(false);
+                }
+            }
+        }
+    }
 
 
 }
