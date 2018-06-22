@@ -62,6 +62,7 @@ android {
             proguardFile 'proguard-rules.pro'
             buildConfigField 'String', 'BASE_URL', '"http://tf.ioniclub.com/"'
             buildConfigField 'String', 'BASE_IMAGE_URL', '"http://tf.ioniclub.com/sys/file/getImg?path="'
+            buildConfigField 'String', 'BASE_FILE_URL', '"http://tf.ioniclub.com/sys/file/downloadFile?path="'
             buildConfigField 'String', 'BASE_H5_URL', '"http://s.huangzhongdalv.com"'
 
         }
@@ -76,6 +77,7 @@ android {
             proguardFile 'proguard-rules.pro'
             buildConfigField 'String', 'BASE_URL', '"http://tf.ioniclub.com/"'
             buildConfigField 'String', 'BASE_IMAGE_URL', '"http://tf.ioniclub.com/sys/file/getImg?path="'
+            buildConfigField 'String', 'BASE_FILE_URL', '"http://tf.ioniclub.com/sys/file/downloadFile?path="'
             buildConfigField 'String', 'BASE_H5_URL', '"http://s.huangzhongdalv.com"'
 
         }

@@ -40,8 +40,10 @@ public class Constant {
      *  传递常量
      */
     public static final String INTENT_SONG_NAME = "INTENT_SONG_NAME";
+    public static final String INTENT_FILE_NAME = "INTENT_FILE_NAME";
 
 
+    public static final String CACHE_FILE_DIR = "tianfucc";
 
 
 }

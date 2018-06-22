@@ -175,7 +175,7 @@ public class SingleDetailActivity extends BasePresenterActivity<SingleDetailPres
             return;
         }
 
-        songName = bean.getDetail().getName();
+        songName = bean.getDetail().getOpern();
 
         this.isFavorite = bean.isCollect();
         if (App.getInstance().checkLogin()) {
@@ -275,14 +275,14 @@ public class SingleDetailActivity extends BasePresenterActivity<SingleDetailPres
 
             case R.id.btn_staff:
                 Bundle name = new Bundle();
-                name.putString(Constant.INTENT_SONG_NAME,songName);
+                name.putString(Constant.INTENT_FILE_NAME,songName);
                 startActivity(this, MusicActivity.class, name);
                 break;
 
             case R.id.bg_staff:
                 Bundle name1 = new Bundle();
-                name1.putString(Constant.INTENT_SONG_NAME,songName);
-                startActivity(this, H5Activity.class, name1);
+                name1.putString(Constant.INTENT_FILE_NAME,songName);
+                startActivity(this, MusicActivity.class, name1);
                 break;
 
 

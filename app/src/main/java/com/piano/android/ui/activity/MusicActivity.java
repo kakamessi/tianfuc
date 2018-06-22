@@ -1,7 +1,6 @@
 package com.piano.android.ui.activity;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Gravity;
@@ -10,10 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.chico.common.CacheUtils;
+import com.piano.android.BuildConfig;
 import com.piano.android.R;
 import com.piano.android.base.BaseMidiActivity;
+import com.piano.android.common.Constant;
 import com.piano.android.common.pianoled.Iled;
 import com.piano.android.common.pianoled.OulaikeLedImpl;
+import com.piano.android.widget.LoadingDialog;
 import com.wanaka.musiccore.app.MusicScorePlayer;
 
 import jp.kshoji.driver.midi.device.MidiInputDevice;
@@ -42,14 +45,18 @@ public class MusicActivity extends BaseMidiActivity {
     Button btn_banzou = null;
     Button btn_gentan = null;
 
+    Button btn_startAB = null;
+    Button btn_endAB = null;
+
     Button btn_lefthand = null;
     Button btn_righthand = null;
 
-    Button[] mBtns = {btn_play,btn_pause,
-                     btn_banzou,btn_gentan,
-                     btn_lefthand,btn_righthand,};
+    Button[] mBtns = null;
 
-    String path = "";
+    String fileName = "";
+    String filePath = "";
+    String fileUrl = "";
+
     MusicScorePlayer player;
     MidiOutputDevice midiO;
     Iled led;
@@ -60,16 +67,16 @@ public class MusicActivity extends BaseMidiActivity {
 
         initMidi();
 
-        player = new MusicScorePlayer();
-        path = Environment.getExternalStorageDirectory().getPath() + "/zz3.xml";
-
+        fileName = getIntent().getStringExtra(Constant.INTENT_FILE_NAME);
+        filePath = CacheUtils.getFilePath(this, Constant.CACHE_FILE_DIR) + "/" + fileName;
+        fileUrl = BuildConfig.BASE_FILE_URL + fileName;
 
         ViewGroup vc = (ViewGroup) this.getLayoutInflater().inflate(R.layout.activity_note, null);
         btn_pause = (Button) vc.findViewById(R.id.button1);
         btn_play = (Button) vc.findViewById(R.id.button2);
 
-        Button b3 = (Button) vc.findViewById(R.id.button3);
-        Button b4 = (Button) vc.findViewById(R.id.button4);
+        btn_startAB = (Button) vc.findViewById(R.id.button3);
+        btn_endAB = (Button) vc.findViewById(R.id.button4);
 
         btn_banzou = (Button) vc.findViewById(R.id.button5);
         btn_gentan = (Button) vc.findViewById(R.id.button6);
@@ -86,19 +93,18 @@ public class MusicActivity extends BaseMidiActivity {
             @Override
             public void onClick(View view) {
                 mPlay();
-
             }
         });
-        b3.setOnClickListener(new View.OnClickListener() {
+        btn_startAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player.setAB();
+                mSetAB();
             }
         });
-        b4.setOnClickListener(new View.OnClickListener() {
+        btn_endAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player.unsetAB();
+                mEndAB();
             }
         });
         //伴弹
@@ -130,9 +136,14 @@ public class MusicActivity extends BaseMidiActivity {
 
         mFrameLayout.addView(vc, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, 150, Gravity.BOTTOM));
 
+        mBtns = new Button[]{btn_play,btn_pause,
+                btn_banzou,btn_gentan,
+                btn_lefthand,btn_righthand,btn_startAB,btn_endAB};
+
+
+        showLoading();
+
         initPlayer();
-
-
     }
 
     @Override
@@ -175,6 +186,7 @@ public class MusicActivity extends BaseMidiActivity {
     public void mPlay(){
         if(null!=player){
             player.play();
+            setBtnEnable(btn_pause);
         }
     }
 
@@ -183,10 +195,27 @@ public class MusicActivity extends BaseMidiActivity {
         if(null!=player){
             state = -1;
             player.pause();
+            setBtnEnable(null);
+        }
+    }
+
+    public void mSetAB(){
+        if(null!=player){
+            player.setAB();
+            setBtnEnable(btn_endAB);
+        }
+    }
+
+    public void mEndAB(){
+        if(null!=player){
+            player.unsetAB();
+            setBtnEnable(null);
         }
     }
 
     void initPlayer() {
+
+        player = new MusicScorePlayer();
         //播放类 用于曲谱显示相关功能性实现 实时处理音频 同步曲谱数据
         player.init();
 
@@ -194,15 +223,14 @@ public class MusicActivity extends BaseMidiActivity {
         player.setListener(new MusicScorePlayer.MusicScorePlayerListener() {
             public void onABOK() {
                 Log.e("musicscoreplayer", ">---<backa");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        btn_pause.setText("onABok-");
-                    }
-                });
+
             }
             public void onMidiRecieved(final int note, final int ison) {
                 Log.e("musicscoreplayer", ">---<backMidiRecieved:" + note);
+
+                if(midiO==null){
+                    return;
+                }
 
                 if(state==0) {
                     //midi发声
@@ -243,7 +271,7 @@ public class MusicActivity extends BaseMidiActivity {
             }
         });
 
-        player.load(path, 0, 150);
+        player.load(filePath, 0, 150);
 
         //0右手 //1左手 // 2 双手（默认双手）
         //player.setHand(0);
@@ -288,15 +316,46 @@ public class MusicActivity extends BaseMidiActivity {
     }
 
     private void setBtnEnable(Button... btns){
+
+        if(null==btns){
+            for(Button btn1: mBtns){
+                btn1.setEnabled(true);
+            }
+
+            btn_startAB.setEnabled(false);
+            btn_endAB.setEnabled(false);
+            return;
+        }
+
         for(Button btn : btns){
             for(Button btn1: mBtns){
                 if(btn.getId()==btn1.getId()){
-                    btn.setEnabled(true);
+                    btn1.setEnabled(true);
                 }else{
-                    btn.setEnabled(false);
+                    btn1.setEnabled(false);
                 }
             }
         }
+
+        btn_startAB.setEnabled(false);
+        btn_endAB.setEnabled(false);
+    }
+
+
+    private LoadingDialog loadingDialog;
+
+    protected void showLoading() {
+        if (loadingDialog == null) {
+            loadingDialog = new LoadingDialog(this);
+        }
+        loadingDialog.show();
+    }
+
+    protected void dismissLoading() {
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+        }
+        loadingDialog = null;
     }
 
 

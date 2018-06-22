@@ -249,4 +249,26 @@ public class CacheUtils {
         return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()
                 + "TB";
     }
+
+    /**
+     * 获取文件缓存路径
+     * @param context
+     * @param dir
+     * @return
+     */
+    public static String getFilePath(Context context,String dir) {
+        String directoryPath="";
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) ) {//判断外部存储是否可用
+            directoryPath =context.getExternalFilesDir(dir).getAbsolutePath();
+        }else{//没外部存储就使用内部存储
+            directoryPath=context.getFilesDir()+File.separator+dir;
+        }
+        File file = new File(directoryPath);
+        if(!file.exists()){//判断文件目录是否存在
+            file.mkdirs();
+        }
+        return directoryPath;
+    }
+
+
 }

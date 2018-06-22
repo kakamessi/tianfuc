@@ -4,6 +4,7 @@ import android.app.Application;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
+import com.chico.common.CacheUtils;
 import com.chico.common.PreferencesUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -13,8 +14,6 @@ import com.piano.android.di.component.AppComponent;
 import com.piano.android.di.component.DaggerAppComponent;
 import com.piano.android.di.module.ApiServiceModule;
 import com.piano.android.di.module.AppModule;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +47,8 @@ public class App extends Application {
                 .appModule(new AppModule(this))
                 .apiServiceModule(new ApiServiceModule())
                 .build();
+
+       CacheUtils.getFilePath(this,Constant.CACHE_FILE_DIR);
     }
 
 
