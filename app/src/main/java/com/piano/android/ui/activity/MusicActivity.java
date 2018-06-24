@@ -14,6 +14,7 @@ import com.piano.android.BuildConfig;
 import com.piano.android.R;
 import com.piano.android.base.BaseMidiActivity;
 import com.piano.android.common.Constant;
+import com.piano.android.common.DownloadFileUtil;
 import com.piano.android.common.pianoled.Iled;
 import com.piano.android.common.pianoled.OulaikeLedImpl;
 import com.piano.android.widget.LoadingDialog;
@@ -143,7 +144,27 @@ public class MusicActivity extends BaseMidiActivity {
 
         showLoading();
 
-        initPlayer();
+        downloadFile();
+    }
+
+    private void downloadFile() {
+
+        DownloadFileUtil.getInstance().download(fileUrl, filePath, new DownloadFileUtil.OnDownloadListener() {
+            @Override
+            public void onDownloadSuccess(String path) {
+                initPlayer();
+                dismissLoading();
+            }
+
+            @Override
+            public void onDownloading(int progress) {
+            }
+
+            @Override
+            public void onDownloadFailed() {
+                MusicActivity.this.finish();
+            }
+        });
     }
 
     @Override
@@ -254,7 +275,7 @@ public class MusicActivity extends BaseMidiActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        btn_righthand.setText(note + "-" + ison );
+                        btn_righthand.setText(note + "-" + state );
                     }
                 });
 
