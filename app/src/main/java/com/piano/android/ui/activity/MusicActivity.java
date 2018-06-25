@@ -72,6 +72,8 @@ public class MusicActivity extends BaseMidiActivity {
         fileDir = CacheUtils.getFilePath(this, Constant.CACHE_FILE_DIR);
         fileUrl = BuildConfig.BASE_FILE_URL + fileName;
 
+        player = new MusicScorePlayer();
+
         initMidi();
         initView();
 
@@ -174,6 +176,7 @@ public class MusicActivity extends BaseMidiActivity {
 
             @Override
             public void onDownloadFailed() {
+                dismissLoading();
                 MusicActivity.this.finish();
             }
         });
@@ -188,13 +191,16 @@ public class MusicActivity extends BaseMidiActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        player.pause();
-        player = null;
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        if(player!=null){
+            player.pause();
+            player = null;
         }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
@@ -248,7 +254,6 @@ public class MusicActivity extends BaseMidiActivity {
 
     void initPlayer() {
 
-        player = new MusicScorePlayer();
         //播放类 用于曲谱显示相关功能性实现 实时处理音频 同步曲谱数据
         player.init();
 
