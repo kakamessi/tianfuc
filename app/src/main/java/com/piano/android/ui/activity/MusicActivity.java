@@ -67,12 +67,17 @@ public class MusicActivity extends BaseMidiActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initMidi();
-
         fileName = getIntent().getStringExtra(Constant.INTENT_FILE_NAME);
         filePath = CacheUtils.getFilePath(this, Constant.CACHE_FILE_DIR) + "/" + fileName;
         fileDir = CacheUtils.getFilePath(this, Constant.CACHE_FILE_DIR);
         fileUrl = BuildConfig.BASE_FILE_URL + fileName;
+
+        initMidi();
+        initView();
+
+    }
+
+    public void initView(){
 
         ViewGroup vc = (ViewGroup) this.getLayoutInflater().inflate(R.layout.activity_note, null);
         btn_pause = (Button) vc.findViewById(R.id.button1);
@@ -145,7 +150,6 @@ public class MusicActivity extends BaseMidiActivity {
 
 
         showLoading();
-
         downloadFile();
     }
 
