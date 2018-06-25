@@ -56,6 +56,7 @@ public class MusicActivity extends BaseMidiActivity {
 
     String fileName = "";
     String filePath = "";
+    String fileDir = "";
     String fileUrl = "";
 
     MusicScorePlayer player;
@@ -70,6 +71,7 @@ public class MusicActivity extends BaseMidiActivity {
 
         fileName = getIntent().getStringExtra(Constant.INTENT_FILE_NAME);
         filePath = CacheUtils.getFilePath(this, Constant.CACHE_FILE_DIR) + "/" + fileName;
+        fileDir = CacheUtils.getFilePath(this, Constant.CACHE_FILE_DIR);
         fileUrl = BuildConfig.BASE_FILE_URL + fileName;
 
         ViewGroup vc = (ViewGroup) this.getLayoutInflater().inflate(R.layout.activity_note, null);
@@ -149,7 +151,13 @@ public class MusicActivity extends BaseMidiActivity {
 
     private void downloadFile() {
 
-        DownloadFileUtil.getInstance().download(fileUrl, filePath, new DownloadFileUtil.OnDownloadListener() {
+        if(CacheUtils.fileIsExists(filePath)){
+            initPlayer();
+            dismissLoading();
+            return;
+        }
+
+        DownloadFileUtil.getInstance().download(fileUrl, fileDir,fileName, new DownloadFileUtil.OnDownloadListener() {
             @Override
             public void onDownloadSuccess(String path) {
                 initPlayer();
