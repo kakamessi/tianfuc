@@ -37,7 +37,7 @@ import jp.kshoji.driver.midi.device.MidiOutputDevice;
 * */
 public class MusicActivity extends BaseMidiActivity {
 
-    //默认伴弹状态， -1暂停状态， 0伴弹，播放   1跟弹，
+    //默认伴弹状态，  0伴弹，播放   1跟弹，
     int state = 0;
 
     Button btn_play = null;
@@ -232,7 +232,6 @@ public class MusicActivity extends BaseMidiActivity {
     //暂停
     public void mPause(){
         if(null!=player){
-            state = -1;
             player.pause();
             setBtnEnable(null);
         }
@@ -312,8 +311,7 @@ public class MusicActivity extends BaseMidiActivity {
         player.load(filePath, 0, 150);
 
         //0右手 //1左手 // 2 双手（默认双手）
-        //player.setHand(0);
-
+        player.setHand(2);
         //0 演奏 伴奏  1 跟弹
         player.setMode(0);
         player.setTempo(1);

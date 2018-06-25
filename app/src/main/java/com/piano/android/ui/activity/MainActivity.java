@@ -73,6 +73,7 @@ public class MainActivity extends BasePresenterActivity<MainPresenter> implement
         checkPermission(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE});
         presenter.getAdvert();
 
+        requestUsbPermission();
     }
 
     @Override

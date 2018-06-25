@@ -261,7 +261,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private MidiDeviceConnectionWatcher deviceConnectionWatcher = null;
-    protected void requestP(){
+    protected void requestUsbPermission(){
         UsbManager usbManager = (UsbManager) getApplicationContext().getSystemService(Context.USB_SERVICE);
         OnMidiDeviceAttachedListener lis = new OnMidiDeviceAttachedListener() {
             @Override
