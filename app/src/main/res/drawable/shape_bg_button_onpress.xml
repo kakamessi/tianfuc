@@ -4,10 +4,10 @@
     <!-- 圆角半径 -->
     <corners android:radius="200dp" />
     <!-- 填充颜色 -->
-    <solid android:color="@android:color/holo_green_light" />
+    <solid android:color="@color/color_music_btn" />
     <!-- 线的宽度，颜色灰色 -->
     <stroke
-        android:width="2dp"
-        android:color="@android:color/holo_orange_dark" />
+        android:width="1dp"
+        android:color="@color/white" />
 
 </shape>

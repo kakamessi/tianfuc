@@ -208,6 +208,7 @@ public class MusicActivity extends BaseMidiActivity {
     public void setBanZou(int hand){
         if(null!=player){
             state = 0;
+            player.setHand(2);
             player.setMode(0);
         }
     }
@@ -216,7 +217,7 @@ public class MusicActivity extends BaseMidiActivity {
     public void setGenTan(int hand){
         if(null!=player){
             state = 1;
-
+            player.setHand(2);
             player.setMode(1);
         }
     }
@@ -249,6 +250,10 @@ public class MusicActivity extends BaseMidiActivity {
             player.unsetAB();
             setBtnEnable(null);
         }
+    }
+
+    public void setFinishedState(){
+        setBtnEnable(null);
     }
 
     void initPlayer() {
@@ -299,9 +304,11 @@ public class MusicActivity extends BaseMidiActivity {
             }
             public void onEnd() {
                 Log.e("musicscoreplayer", ">---<backonend");
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        setFinishedState();
                         btn_play.setText("onEnd-");
                     }
                 });

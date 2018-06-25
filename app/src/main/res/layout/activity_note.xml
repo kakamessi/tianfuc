@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@color/color_tab_normal"
     tools:context="com.piano.android.ui.activity.MusicActivity">
 
     <LinearLayout
@@ -17,13 +17,18 @@
             android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
             android:layout_weight="1"
+            android:textColor="@color/white"
             android:text="暂停" />
         <Button
             android:id="@+id/button2"
             android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:text="开始" />
         <Button
@@ -32,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:visibility="gone"
             android:enabled="false"
             android:text="开始AB" />
         <Button
@@ -40,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:visibility="gone"
             android:enabled="false"
             android:text="取消AB" />
         <Button
@@ -47,13 +54,19 @@
             android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+
             android:layout_weight="1"
+            android:textColor="@color/white"
             android:text="伴弹" />
         <Button
             android:id="@+id/button6"
             android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:text="跟弹" />
         <Button
@@ -61,6 +74,9 @@
             android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dp_margin"
+
             android:layout_weight="1"
             android:text="左手" />
         <Button
@@ -68,6 +84,9 @@
             android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dp_margin"
+
             android:layout_weight="1"
             android:text="右手" />
 

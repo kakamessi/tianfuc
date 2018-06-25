@@ -42,4 +42,7 @@
     <color name="color_filter_checked">#ffffff</color>
     <color name="color_filter_unchecked">#101010</color>
 
+    <!-- 练习界面 -->
+    <color name="color_music_btn">#7F727c85</color>
+
 </resources>
