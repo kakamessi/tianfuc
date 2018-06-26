@@ -76,4 +76,9 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <style name="My_CheckBox" parent="@android:style/Widget.Material.CompoundButton.CheckBox">
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+        <item name="android:colorControlNormal">@color/colorPrimary</item>
+    </style>
+
 </resources>

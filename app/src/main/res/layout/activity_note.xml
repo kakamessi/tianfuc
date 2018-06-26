@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/color_tab_normal"
+    android:orientation="vertical"
     tools:context="com.piano.android.ui.activity.MusicActivity">
 
     <LinearLayout
@@ -12,87 +12,152 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/button1"
-            android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_margin"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:text="暂停" />
+            android:background="@drawable/selector_music_btn"
+            android:text="暂停"
+            android:textColor="@color/white" />
+
         <Button
             android:id="@+id/button2"
-            android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_margin"
-
-            android:textColor="@color/white"
             android:layout_weight="1"
-            android:text="开始" />
+            android:background="@drawable/selector_music_btn"
+            android:text="开始"
+            android:textColor="@color/white" />
+
         <Button
             android:id="@+id/button3"
-            android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="gone"
+            android:background="@drawable/selector_music_btn"
             android:enabled="false"
-            android:text="开始AB" />
+            android:text="开始AB"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/button4"
-            android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="gone"
+            android:background="@drawable/selector_music_btn"
             android:enabled="false"
-            android:text="取消AB" />
+            android:text="取消AB"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/button5"
-            android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_margin"
-
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:text="伴弹" />
+            android:visibility="gone"
+            android:background="@drawable/selector_music_btn"
+            android:text="伴弹"
+            android:textColor="@color/white" />
+
         <Button
             android:id="@+id/button6"
-            android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_margin"
-
-            android:textColor="@color/white"
+            android:visibility="gone"
             android:layout_weight="1"
-            android:text="跟弹" />
+            android:background="@drawable/selector_music_btn"
+            android:text="跟弹"
+            android:textColor="@color/white" />
+
         <Button
             android:id="@+id/button7"
-            android:background="@drawable/selector_music_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_margin="@dimen/dp_margin"
-
             android:layout_weight="1"
-            android:text="左手" />
+            android:visibility="gone"
+            android:background="@drawable/selector_music_btn"
+            android:text="左手"
+            android:textColor="@color/white" />
+
         <Button
             android:id="@+id/button8"
-            android:background="@drawable/selector_music_btn"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_margin="@dimen/dp_margin"
-
             android:layout_weight="1"
-            android:text="右手" />
+            android:background="@drawable/selector_music_btn"
+            android:text="右手"
+            android:textColor="@color/white" />
 
+        <CheckBox
+            android:id="@+id/cb_bantan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+            android:layout_weight="1"
+            android:text="伴弹"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:theme="@style/My_CheckBox"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_gentan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+            android:layout_weight="1"
+            android:text="跟弹"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:theme="@style/My_CheckBox"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+            android:layout_weight="1"
+            android:text="左手"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:theme="@style/My_CheckBox"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+            android:layout_weight="1"
+            android:text="右手"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:theme="@style/My_CheckBox"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_both"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_margin"
+            android:layout_weight="1"
+            android:text="双手"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:theme="@style/My_CheckBox"
+            />
 
     </LinearLayout>
-
 
 
 </LinearLayout>
