@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -44,7 +45,10 @@ public class MusicActivity extends BaseMidiActivity{
     // 0 伴奏  1跟奏
     int typeCode = 0;
 
+
     //---------跟弹 伴弹
+    Button button_finish = null;
+
     Button btn_play = null;
     Button btn_pause = null;
     Button btn_startAB = null;
@@ -113,10 +117,16 @@ public class MusicActivity extends BaseMidiActivity{
 
         btn_pause = (Button) vc.findViewById(R.id.button1);
         btn_play = (Button) vc.findViewById(R.id.button2);
-
+        button_finish = (Button) vc.findViewById(R.id.button_finish);
         btn_startAB = (Button) vc.findViewById(R.id.button3);
         btn_endAB = (Button) vc.findViewById(R.id.button4);
 
+        button_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isCosumenBackKey();
+            }
+        });
 
         btn_pause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,18 +198,6 @@ public class MusicActivity extends BaseMidiActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        if(player!=null){
-            player.pause();
-            player = null;
-        }
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        this.finish();
 
     }
 
@@ -301,7 +299,6 @@ public class MusicActivity extends BaseMidiActivity{
                     @Override
                     public void run() {
                         setFinishedState();
-                        btn_play.setText("onEnd-");
                     }
                 });
             }
@@ -429,6 +426,32 @@ public class MusicActivity extends BaseMidiActivity{
 
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) { // 监控/拦截/屏蔽返回键
+//do something
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private boolean isCosumenBackKey() {
+        // 这儿做返回键的控制，如果自己处理返回键逻辑就返回true，如果返回false,代表继续向下传递back事件，由系统去控制
+        if(player!=null){
+            player.pause();
+            player = null;
+        }
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.finish();
+
+        return true;
+    }
+
+
 
 
 }
